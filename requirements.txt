@@ -1,0 +1,5 @@
+langchain
+llama-index==0.5.20
+openai
+streamlit
+fpdf
