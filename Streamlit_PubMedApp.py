@@ -23,7 +23,7 @@ st.set_page_config(page_title="My App")
 st.header("⚕️PubMedGPT ")
 sidebar()
 st.subheader(
-    "I am a PumMedGPT(Chatbot) Medical Scientist. Please fill the fields below to start our discussion.."
+    "I am a PubMedGPT(Chatbot) Medical Scientist. Please fill the fields below to start our discussion.."
     "If you find it useful, you can kindly donate here [Stripe](https://buy.stripe.com/cN2dUu44OahXaJO288)"
 )
 
