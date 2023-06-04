@@ -57,6 +57,7 @@ if query and max_query and dummy:
         # load the reader
         loader = PubmedReader_mod()
         documents = loader.load_data(search_query=query,max_results=max_query,search_criterion= search_query_int)
+        index = GPTSimpleVectorIndex.from_documents(documents)
         st.markdown("PumMed papers are loaded based on the criteria.")
         st.session_state["api_key_configured"] = True
     except Exception as e:
