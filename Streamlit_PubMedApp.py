@@ -16,21 +16,26 @@ from  sidebar  import *
 PubmedReader = download_loader("PubmedReader")
 global index,dummy
 
-
+index = None
 
 st.set_page_config(page_title="My App")
 
 st.header("⚕️PubMedGPT ")
 sidebar()
 st.subheader(
-    "I am a PubMedGPT(Chatbot) Medical Scientist. Please fill the fields below to start our discussion.."
+    "I am a PumMedGPT(Chatbot) Medical Scientist. Please fill the fields below to start our discussion.."
     "If you find it useful, you can kindly donate here [Stripe](https://buy.stripe.com/cN2dUu44OahXaJO288)"
 )
 
 
+api_key_input = st.text_input(
+    "OpenAI API Key",
+    type="password",
+    placeholder="Paste your OpenAI API key here.....",
+    help="You can get your API key from https://platform.openai.com/account/api-keys.",
+)
 
-
-os.environ['OPENAI_API_KEY'] = str(st.session_state.get('OPENAIAPI_KEY'))
+os.environ['OPENAI_API_KEY'] = api_key_input
 
 
 query = st.text_input("What is the medical scientific topic do you want to discuss?")
@@ -59,7 +64,6 @@ if query and max_query and dummy:
         documents = loader.load_data(search_query=query,max_results=max_query,search_criterion= search_query_int)
         index = GPTSimpleVectorIndex.from_documents(documents)
         st.markdown("PumMed papers are loaded based on the criteria.")
-        st.session_state["api_key_configured"] = True
     except Exception as e:
         st.error("Please configure your OpenAI API key!")
 
@@ -71,18 +75,22 @@ with st.form("my_form"):
         user = st.text_input("Ask me any question about "+query+":")
         # Every form must have a submit button.
         submitted = st.form_submit_button("Submit")
-        if user:
-            response = str(index.query(user))
+        try:
+            if user and index is not None:
+                response = str(index.query(user))
+        except Exception as err:
+            st.error("User input or Index Error", err)
+
 
         if submitted:
           try:
-            if  not st.session_state.get("api_key_configured"):
-                st.error("Please configure your OpenAI API key!")
+            if not api_key_input:
+                st.error("Please enter Open Api Key!")
             if not query:
                 st.error("Please enter a topic to discuss!")
             if not max_query:
                 st.error("Please choose number of files to be loaded!")
-            if(st.session_state.get("api_key_configured") and query and max_query):
+            if(  query and max_query ):
                 st.text_area("Medical Bot 👨‍⚕️", response, height=500)
           except OpenAIError as e:
                  st.error(e._message)

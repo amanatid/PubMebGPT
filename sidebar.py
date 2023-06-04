@@ -18,16 +18,7 @@ def sidebar():
             "5. Wait for the message 'PubMed papers are loaded based on the criteria' to be appeared.\n"
         )
 
-        api_key_input = st.text_input(
-            "OpenAI API Key",
-            type="password",
-            placeholder="Paste your OpenAI API key here (sk-...)",
-            help="You can get your API key from https://platform.openai.com/account/api-keys.",
-            value=st.session_state.get("OPENAI_API_KEY", ""),
-        )
 
-        if api_key_input:
-            set_openai_api_key(api_key_input)
 
         st.markdown("---")
         st.markdown("# About")
