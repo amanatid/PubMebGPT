@@ -7,8 +7,8 @@ We create a PubMedBot App  using Streamlit, llama_index, Langchain and OpenAI. T
 can answer you  questions that are related to Medical Science. For this reason you need an account on OpenAI and its associated
 api key. More specifically, you need to train our Medical Scientist based on the seacrh query,  number of related files and a specific criterion. The criterion is based on three parameters a)Relevance, b)Publication Date and c)Journal Name.
 
-    
-You can find the app on [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](dddsaada). In case you find it useful you can donate on [Stripe](https://buy.stripe.com/cN2dUu44OahXaJO288). 
+Note this version works locally **only on your computer** and not on the platform of Streamlit.
+You can find a working  [updated version](https://github.com/amanatid/ArxivChaBot_StreamLit_Updated/tree/main) of the  the app on  platfom [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://amanatid-pubmebgptupdated-streamlit-pubmedapp-updated-kxty2b.streamlit.app/). In case you find it useful you can donate on [Stripe (https://buy.stripe.com/cN2dUu44OahXaJO288).  
 
 
 
